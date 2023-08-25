@@ -24,7 +24,17 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public String signUp(@ModelAttribute SignUpRequestDto signUpRequestDto) {
+    public String signUp(@ModelAttribute SignUpRequestDto signUpRequestDto, Model model) {
+        Map<String, String> errors = new HashMap<>();
+
+        if(signUpRequestDto.getEmail()==null || signUpRequestDto.getEmail()==""){
+            errors.put("email","이메일을 입력해 주세요.");
+        }
+
+        if(!errors.isEmpty()){
+            model.addAttribute("errors",errors);
+            return "signup";
+        }
 
         return "redirect:/";
     }
