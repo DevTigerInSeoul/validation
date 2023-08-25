@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+    <link rel="stylesheet" th:href="@{/css/signup.css}" href="/static/css/signup.css">
+    <link rel="stylesheet" th:href="@{/css/global.css}" href="/static/css/global.css">
+</head>
+<body>
+<header>
+
+</header>
+<main>
+    <div id="signup-form">
+        <h1>SignUp</h1>
+
+        <form th:action="@{/signup}" method="post">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="email">
+
+            <label>PW</label>
+            <input type="password" name="pw" placeholder="password">
+
+            <label>Nickname</label>
+            <input name="nickname" placeholder="nickname">
+            <button>회원가입</button>
+        </form>
+    </div>
+</main>
+<footer>
+
+</footer>
+
+</body>
+</html>
