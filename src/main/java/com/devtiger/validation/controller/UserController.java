@@ -26,9 +26,11 @@ public class UserController {
     }
 
     @PostMapping("/signup")
+
     public String signUp(@Validated @ModelAttribute SignUpRequestDto signUpRequestDto, BindingResult bindingResult, Model model) {
 
         if(bindingResult.hasErrors()){
+
             return "signup";
         }
 

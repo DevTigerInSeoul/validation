@@ -16,8 +16,10 @@
 
         <form th:action="@{/signup}" method="post" th:object="${signUpRequestDto}">
             <label>Email</label>
+
             <input type="email" placeholder="email" th:field="*{email}">
             <p th:errors="*{email}"></p>
+
 
             <label>PW</label>
             <input type="password" placeholder="password" th:field="*{password}">
