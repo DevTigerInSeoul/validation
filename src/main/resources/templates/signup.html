@@ -14,18 +14,22 @@
     <div id="signup-form">
         <h1>SignUp</h1>
 
-        <form th:action="@{/signup}" method="post">
+        <form th:action="@{/signup}" method="post" th:object="${signUpRequestDto}">
             <label>Email</label>
-            <input type="email" name="email" placeholder="email">
-            <p th:if="${errors?.containsKey('email')}" th:text="${errors['email']}"></p>
+            <input type="email" placeholder="email" th:field="*{email}">
+            <p th:errors="*{email}"></p>
 
             <label>PW</label>
-            <input type="password" name="pw" placeholder="password">
+            <input type="password" placeholder="password" th:field="*{password}">
+            <p th:errors="*{password}"></p>
 
             <label>Nickname</label>
-            <input name="nickname" placeholder="nickname">
+            <input placeholder="nickname" th:field="*{nickname}">
+            <p th:errors="*{nickname}"></p>
+
             <button>회원가입</button>
         </form>
+
     </div>
 </main>
 <footer>
