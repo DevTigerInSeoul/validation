@@ -3,6 +3,8 @@ package com.devtiger.validation.controller;
 import com.devtiger.validation.dto.SignUpRequestDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,20 +21,16 @@ public class UserController {
     }
 
     @GetMapping("/signup")
-    public String goSignUp() {
+    public String goSignUp(@ModelAttribute SignUpRequestDto signUpRequestDto) {
         return "signup";
     }
 
     @PostMapping("/signup")
-    public String signUp(@ModelAttribute SignUpRequestDto signUpRequestDto, Model model) {
-        Map<String, String> errors = new HashMap<>();
 
-        if(signUpRequestDto.getEmail()==null || signUpRequestDto.getEmail()==""){
-            errors.put("email","이메일을 입력해 주세요.");
-        }
+    public String signUp(@Validated @ModelAttribute SignUpRequestDto signUpRequestDto, BindingResult bindingResult, Model model) {
 
-        if(!errors.isEmpty()){
-            model.addAttribute("errors",errors);
+        if(bindingResult.hasErrors()){
+
             return "signup";
         }
 
