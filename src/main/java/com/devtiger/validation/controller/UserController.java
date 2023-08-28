@@ -31,6 +31,7 @@ public class UserController {
 
     public String signUp(@Validated @ModelAttribute SignUpRequestDto signUpRequestDto, BindingResult bindingResult, Model model) {
 
+
         if(true){//내가 작성한 오류가 true라면
             //bindingResult.addError(new FieldError("signUpRequestDto","email","이메일 중복 입니다."));
             //bindingResult.addError(new ObjectError("signUpRequestDto","이메일 중복입니다."));
@@ -40,6 +41,7 @@ public class UserController {
         }
 
         if(bindingResult.hasErrors()){
+
 
             return "signup";
         }
