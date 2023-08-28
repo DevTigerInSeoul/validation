@@ -29,6 +29,11 @@
             <input placeholder="nickname" th:field="*{nickname}">
             <p th:errors="*{nickname}"></p>
 
+            <div th:if="${#fields.hasGlobalErrors()}">
+                <p th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
+            </div>
+
+
             <button>회원가입</button>
         </form>
 
